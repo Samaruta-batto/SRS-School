@@ -1,0 +1,121 @@
+Goal: Generate a complete, single-file, responsive React application (App.jsx) for a School Management System (SRS) aimed at school administrators, inspired by modern SaaS aesthetics (referencing the provided Framer/ShadCN theme and design principles). The application must incorporate all features mentioned in the EduFlex README.md that can be feasibly implemented within a client-side React/Firestore single-file structure.
+
+Technology Stack & Constraints:
+
+Framework: React (Functional Components and Hooks).
+
+Styling: Tailwind CSS, utilizing ShadCN/UI and MagicUI components and aesthetics for a professional, modern, and dark-mode compatible look. Use lucide-react for all icons.
+
+Data Persistence: Implement Firebase Firestore for real-time data storage and retrieval. (Initialize and authenticate Firebase using the provided global variables: __app_id, __firebase_config, and __initial_auth_token).
+
+File Structure: All code (React, logic, and styling) must be contained within a single App.jsx file.
+
+Core Data Models (Firestore Structure):
+
+Students Collection:
+
+name: string
+
+admissionId: string (Unique identifier, document ID)
+
+grade: string
+
+contact: string
+
+isHostelResident: boolean
+
+Fees Collection:
+
+studentId: string (Reference to student)
+
+month: string (e.g., '2025-09')
+
+tuitionFee: number
+
+hostelFee: number (Only applies if isHostelResident is true)
+
+fineFee: number (For penalties/fines)
+
+annualFunctionFee: number (Fixed event fee)
+
+campFee: number (For Summer/Winter Camps)
+
+otherEventFees: { [eventName: string]: number } (Map to track various small event fees)
+
+isPaid: boolean
+
+paymentDate: timestamp
+
+Events Collection:
+
+eventName: string (e.g., 'Annual Day 2025', 'Republic Day Function')
+
+eventDate: timestamp
+
+description: string
+
+eventRecords: string (This field must store a JSON string of a detailed, structured, tabular dataset specific to this event, which must be parsed and displayed in a table in the UI).
+
+Staff Collection (NEW):
+
+staffId: string (Unique identifier, document ID)
+
+name: string
+
+role: string (e.g., 'Teacher', 'Driver', 'Non-Teaching')
+
+contact: string
+
+salary: number (For financial management reporting)
+
+Transport Collection (NEW):
+
+routeId: string (Unique identifier, document ID)
+
+routeName: string
+
+driverId: string (Reference to Staff)
+
+capacity: number
+
+assignedStudents: string[] (Array of Student Admission IDs)
+
+Required Application Modules (Views/Tabs):
+
+Dashboard: A clean overview showing key metrics (Total Students, Pending Fees Count, Upcoming Events). Use MagicUI stats cards and dynamic charts (recharts) to visualize fee collection status.
+
+Student Management: CRUD interface for students, including basic academic record fields (e.g., a simple text field for 'Last Exam Score'). Ability to filter by grade and hostel status.
+
+Fees Management:
+
+A view to select a student and generate a monthly invoice.
+
+The invoice/fees form MUST allow input for all defined fee types (tuition, hostel, fine, annual function, camp, and custom otherEventFees).
+
+Functionality to mark fees as paid in real-time and provide basic financial reporting (Total Collected/Total Pending).
+
+Attendance Tracking: Simple daily attendance tracking for students (Present/Absent status).
+
+Event Regulator:
+
+Event List: Display all recorded events.
+
+Record Sheet Editor: Provide a dedicated input area (JSON editor/text area) where the administrator can paste or type structured data, stored as the JSON string in eventRecords.
+
+View Records: The JSON string must be parsed and rendered as an elegant, scrollable data table.
+
+Staff Management (NEW): CRUD interface for staff members, including role and salary information.
+
+Transport Management (NEW): CRUD interface for managing routes, assigning a staff member as the driver, and listing/assigning students to the route.
+
+User Management (RBAC Stub - NEW): A view that prominently displays the current Firebase userId and a label indicating a fixed 'Administrator' role status (as true RBAC is not possible in this single-file client application).
+
+Aesthetics & UX:
+
+Implement a modern layout using a sidebar for navigation and a main content area.
+
+Ensure the entire application is fully responsive (mobile, tablet, desktop).
+
+Use sophisticated components (data tables, animated cards, input masks for currency) consistent with ShadCN/UI standards.
+
+Include a prominent display of the user's userId (from Firebase authentication) for administrative reference.
