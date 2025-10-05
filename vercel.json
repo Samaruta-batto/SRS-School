@@ -5,10 +5,13 @@
   "installCommand": "npm install",
   "framework": null,
   "outputDirectory": "dist/public",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "functions": {
