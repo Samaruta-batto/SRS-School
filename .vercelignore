@@ -1,0 +1,10 @@
+node_modules
+.env
+.env.*
+*.log
+.git
+.gitignore
+README.md
+replit.md
+design_guidelines.md
+attached_assets
