@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   LayoutDashboard,
   Users,
@@ -68,8 +69,23 @@ const benefits = [
 export default function Landing() {
   return (
     <div className="min-h-screen">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="max-w-7xl mx-auto px-6 flex h-16 items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+              <span className="font-bold text-lg text-primary-foreground">E</span>
+            </div>
+            <div>
+              <h2 className="font-semibold">EduFlex</h2>
+            </div>
+          </div>
+          <ThemeToggle />
+        </div>
+      </header>
+
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-chart-1/5 to-background dark:from-primary/5 dark:via-background dark:to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-chart-2/10 via-transparent to-transparent dark:from-transparent" />
         <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -117,7 +133,7 @@ export default function Landing() {
               <img
                 src={laptopImage}
                 alt="EduFlex Dashboard"
-                className="w-full h-auto rounded-xl"
+                className="w-full h-auto rounded-xl animate-float"
               />
             </div>
           </div>
@@ -156,8 +172,9 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-chart-3/10 via-transparent to-transparent dark:from-transparent" />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
@@ -172,7 +189,7 @@ export default function Landing() {
                   <img
                     src={analyticsIcon}
                     alt="Analytics"
-                    className="h-12 w-12"
+                    className="h-12 w-12 animate-float-delayed"
                   />
                   <h4 className="font-semibold">Real-time Analytics</h4>
                   <p className="text-sm text-muted-foreground">
@@ -183,7 +200,7 @@ export default function Landing() {
                   <img
                     src={checklistIcon}
                     alt="Checklist"
-                    className="h-12 w-12"
+                    className="h-12 w-12 animate-float"
                   />
                   <h4 className="font-semibold">Custom Reports</h4>
                   <p className="text-sm text-muted-foreground">
@@ -196,27 +213,28 @@ export default function Landing() {
               <img
                 src={studentReportImage}
                 alt="Student Reports"
-                className="w-full h-auto rounded-xl shadow-2xl"
+                className="w-full h-auto rounded-xl shadow-2xl animate-float-slow"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 lg:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent dark:from-transparent" />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="grid grid-cols-2 gap-4">
                 <img
                   src={communicateImage}
                   alt="Communication"
-                  className="w-full h-auto rounded-xl"
+                  className="w-full h-auto rounded-xl animate-float"
                 />
                 <img
                   src={smsGatewayImage}
                   alt="SMS Gateway"
-                  className="w-full h-auto rounded-xl mt-8"
+                  className="w-full h-auto rounded-xl mt-8 animate-float-delayed"
                 />
               </div>
             </div>
@@ -241,8 +259,9 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 lg:py-32 bg-gradient-to-t from-background via-muted/30 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-chart-4/10 via-transparent to-transparent dark:from-transparent" />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
@@ -277,15 +296,16 @@ export default function Landing() {
               <img
                 src={supportTeamImage}
                 alt="Support Team"
-                className="w-full h-auto"
+                className="w-full h-auto animate-float-slow"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 border-t">
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
+      <section className="py-20 lg:py-32 border-t relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-chart-5/5 to-background dark:from-primary/5 dark:via-background dark:to-background" />
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative">
           <div className="space-y-4">
             <h2 className="text-3xl lg:text-5xl font-bold tracking-tight">
               Ready to Transform Your School?
@@ -310,7 +330,7 @@ export default function Landing() {
             <img
               src={reportCardImage}
               alt="Report Card"
-              className="mx-auto rounded-xl shadow-lg max-w-2xl w-full"
+              className="mx-auto rounded-xl shadow-lg max-w-2xl w-full animate-float-slow"
             />
           </div>
         </div>
