@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "buildCommand": "vite build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
@@ -13,10 +12,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20"
-    }
-  }
+  ]
 }
