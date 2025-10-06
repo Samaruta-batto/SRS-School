@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { MagicCard } from "@/registry/magicui/magic-card";
+import { BentoGrid, BentoCard } from "@/registry/magicui/bento-grid";
 import {
   LayoutDashboard,
   Users,
@@ -152,23 +154,29 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <BentoGrid>
             {features.map((feature, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-feature-${index}`}>
-                <CardContent className="p-6 space-y-4">
+              <MagicCard 
+                key={index} 
+                className="hover-elevate" 
+                data-testid={`card-feature-${index}`}
+                gradientColor="#8b5cf6"
+                gradientOpacity={0.3}
+              >
+                <div className="p-6 space-y-4 h-full flex flex-col">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex-1">
                     <h3 className="text-lg font-semibold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </MagicCard>
             ))}
-          </div>
+          </BentoGrid>
         </div>
       </section>
 
