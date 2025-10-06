@@ -70,15 +70,17 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="border-b border-sidebar-border p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-            <span className="font-bold text-lg text-primary-foreground">E</span>
+        <Link href="/">
+          <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+              <span className="font-bold text-lg text-primary-foreground">E</span>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold">EduFlex</h2>
+              <p className="text-xs text-muted-foreground">School Management</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-lg font-semibold">EduFlex</h2>
-            <p className="text-xs text-muted-foreground">School Management</p>
-          </div>
-        </div>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
