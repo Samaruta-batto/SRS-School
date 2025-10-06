@@ -142,8 +142,10 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 lg:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-1/5 to-background dark:from-primary/10 dark:via-background dark:to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold tracking-tight">
               Complete School Management Suite
@@ -158,18 +160,17 @@ export default function Landing() {
             {features.map((feature, index) => (
               <MagicCard 
                 key={index} 
-                className="hover-elevate" 
                 data-testid={`card-feature-${index}`}
                 gradientColor="#8b5cf6"
-                gradientOpacity={0.3}
+                gradientOpacity={0.2}
               >
-                <div className="p-6 space-y-4 h-full flex flex-col">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                <div className="p-6 space-y-3 h-full flex flex-col">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm">
+                    <feature.icon className="h-7 w-7 text-primary" />
                   </div>
                   <div className="space-y-2 flex-1">
-                    <h3 className="text-lg font-semibold">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-xl font-bold">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
