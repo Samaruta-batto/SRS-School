@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { MagicCard } from "@/registry/magicui/magic-card";
 import { BentoGrid, BentoCard } from "@/registry/magicui/bento-grid";
+import { GridPattern } from "@/registry/magicui/grid-pattern";
+import { ShimmerButton } from "@/registry/magicui/shimmer-button";
 import {
   LayoutDashboard,
   Users,
@@ -81,13 +83,18 @@ export default function Landing() {
               <h2 className="font-semibold">EduFlex</h2>
             </div>
           </div>
-          <ThemeToggle />
+          <AnimatedThemeToggler />
         </div>
       </header>
 
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-chart-1/5 to-background dark:from-primary/5 dark:via-background dark:to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-chart-2/10 via-transparent to-transparent dark:from-transparent" />
+        <GridPattern
+          width={60}
+          height={60}
+          className="absolute inset-0 h-full w-full [mask-image:radial-gradient(ellipse_at_center,white,transparent_85%)]"
+        />
         <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -106,10 +113,16 @@ export default function Landing() {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link href="/dashboard">
-                  <Button size="lg" className="gap-2" data-testid="button-get-started">
-                    Get Started
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                  <ShimmerButton
+                    className="shadow-2xl"
+                    data-testid="button-get-started"
+                    background="linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--chart-1)) 100%)"
+                  >
+                    <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base flex items-center gap-2">
+                      Get Started
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </ShimmerButton>
                 </Link>
                 <Button size="lg" variant="outline" data-testid="button-learn-more">
                   Learn More
@@ -145,6 +158,11 @@ export default function Landing() {
       <section className="py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-1/5 to-background dark:from-primary/10 dark:via-background dark:to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        <GridPattern
+          width={50}
+          height={50}
+          className="absolute inset-0 h-full w-full opacity-30 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"
+        />
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold tracking-tight">
@@ -163,6 +181,7 @@ export default function Landing() {
                 data-testid={`card-feature-${index}`}
                 gradientColor="#8b5cf6"
                 gradientOpacity={0.2}
+                shine={true}
               >
                 <div className="p-6 space-y-3 h-full flex flex-col">
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm">
@@ -326,10 +345,16 @@ export default function Landing() {
           </div>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/dashboard">
-              <Button size="lg" className="gap-2" data-testid="button-cta-start">
-                Get Started Now
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+              <ShimmerButton
+                className="shadow-2xl"
+                data-testid="button-cta-start"
+                background="linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--chart-1)) 100%)"
+              >
+                <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base flex items-center gap-2">
+                  Get Started Now
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </ShimmerButton>
             </Link>
             <Button size="lg" variant="outline" data-testid="button-cta-demo">
               Schedule a Demo
