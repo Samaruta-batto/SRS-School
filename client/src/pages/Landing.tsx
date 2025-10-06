@@ -71,18 +71,28 @@ const benefits = [
 ];
 
 export default function Landing() {
+  const scrollToFeatures = () => {
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="max-w-7xl mx-auto px-6 flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <span className="font-bold text-lg text-primary-foreground">E</span>
+          <Link href="/">
+            <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+                <span className="font-bold text-lg text-primary-foreground">E</span>
+              </div>
+              <div>
+                <h2 className="font-semibold">EduFlex</h2>
+                <p className="text-xs text-muted-foreground">School Management</p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-semibold">EduFlex</h2>
-            </div>
-          </div>
+          </Link>
           <AnimatedThemeToggler />
         </div>
       </header>
@@ -124,7 +134,13 @@ export default function Landing() {
                     </span>
                   </ShimmerButton>
                 </Link>
-                <Button size="lg" variant="outline" data-testid="button-learn-more">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  data-testid="button-learn-more"
+                  onClick={scrollToFeatures}
+                  className="hover:bg-primary/10 transition-all duration-300"
+                >
                   Learn More
                 </Button>
               </div>
@@ -155,7 +171,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 relative overflow-hidden">
+      <section id="features" className="py-20 lg:py-32 relative overflow-hidden scroll-mt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-chart-1/5 to-background dark:from-primary/10 dark:via-background dark:to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
         <GridPattern
